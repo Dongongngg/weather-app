@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,MAAM,EAAE,KAAK;CACd",
+    "mappings": "",
     "sources": [
         "weather_page.scss"
     ],

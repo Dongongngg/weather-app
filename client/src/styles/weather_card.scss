@@ -1,0 +1,32 @@
+.weather-card {
+  .city-name {
+    height: 20vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      font-size: 5rem;
+      padding: 2rem;
+    }
+  }
+  .info-wrapper {
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    font-size: 5rem;
+    .left-icon,
+    .right-icon,
+    .weather-info {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 5rem;
+    }
+    .weather-info {
+      font-size: 3rem;
+    }
+  }
+}

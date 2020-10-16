@@ -1,10 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-
 const app = express();
 //entry point html
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/index.html"));
 });
 

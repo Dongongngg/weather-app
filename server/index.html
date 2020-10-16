@@ -24,14 +24,14 @@
     </style>
     <script>
       function enter() {
-        location.replace("localhost:3000/weather");
+        console.log(window.location);
+        window.location.href = "http://localhost:3000/weather";
       }
     </script>
   </head>
   <body>
     <div class="app">
       <button class="btn" onclick="enter()">Start App</button>
-      <a href="localhost:3000/weather">start</a>
     </div>
   </body>
 </html>
