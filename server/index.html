@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Weather App</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .app {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn {
+        width: 33vh;
+        height: 10vh;
+        background-color: chocolate;
+        color: #eee;
+        font-size: 2rem;
+      }
+    </style>
+    <script>
+      function enter() {
+        location.replace("localhost:3000/weather");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <button class="btn" onclick="enter()">Start App</button>
+      <a href="localhost:3000/weather">start</a>
+    </div>
+  </body>
+</html>
