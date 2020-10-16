@@ -12,13 +12,14 @@ router.get("/:cityName", (req, res) => {
   fetch("https://www.metaweather.com/api/location/search/?query=" + cityName)
     .then((res) => res.json())
     .then((data) => {
-      console.log("fetch location id: ", data);
+      console.log("fetch location : ", cityName);
 
       //send cityid to get city weather
       fetch("https://www.metaweather.com/api/location/" + data[0].woeid + "/")
         .then((res) => res.json())
         .then((data) => {
-          console.log("weather data: ", data);
+          console.log(data.consolidated_weather[0]);
+          res.setHeader("Access-Control-Allow-Origin", "*");
           res.send(data.consolidated_weather[0]);
         })
         .catch((err) => console.log(err));
