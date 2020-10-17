@@ -13,24 +13,38 @@
 }
 
 .weather-card .city-name h1 {
-  font-size: 5rem;
+  font-size: 10rem;
   padding: 2rem;
+  color: #eee;
 }
 
 .weather-card .info-wrapper {
   height: 80vh;
+  padding-left: 10%;
+  padding-right: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   font-size: 5rem;
+  min-width: 300px;
 }
 
 .weather-card .info-wrapper .left-icon,
-.weather-card .info-wrapper .right-icon,
-.weather-card .info-wrapper .weather-info {
-  text-align: center;
+.weather-card .info-wrapper .right-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.weather-card .info-wrapper .loading-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,10 +58,47 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 5rem;
 }
 
 .weather-card .info-wrapper .weather-info {
+  min-width: 300px;
+  padding-bottom: 10vh;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #eee;
   font-size: 3rem;
+}
+
+.weather-card .info-wrapper .weather-info .temp-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.weather-card .info-wrapper .icon {
+  -webkit-transition: all 0.33s;
+  transition: all 0.33s;
+  cursor: pointer;
+}
+
+.weather-card .info-wrapper .icon:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /*# sourceMappingURL=weather_card.css.map */

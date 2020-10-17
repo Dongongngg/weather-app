@@ -6,27 +6,54 @@
     align-items: center;
     justify-content: center;
     h1 {
-      font-size: 5rem;
+      font-size: 10rem;
       padding: 2rem;
+      color: #eee;
     }
   }
   .info-wrapper {
     height: 80vh;
+    padding-left: 10%;
+    padding-right: 10%;
     display: flex;
     justify-content: space-around;
     font-size: 5rem;
+    min-width: 300px;
     .left-icon,
-    .right-icon,
-    .weather-info {
-      text-align: center;
+    .right-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loading-icon {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 5rem;
     }
     .weather-info {
+      min-width: 300px;
+      padding-bottom: 10vh;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      color: #eee;
       font-size: 3rem;
+      .temp-box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+
+    .icon {
+      transition: all 0.33s;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }

@@ -1,1 +1,6 @@
-/* No CSS *//*# sourceMappingURL=weather_page.css.map */
+.weather-page {
+  background-image: url("http://localhost:5000/static/img/background.jpg");
+  background-position: center;
+  background-size: cover;
+}
+/*# sourceMappingURL=weather_page.css.map */

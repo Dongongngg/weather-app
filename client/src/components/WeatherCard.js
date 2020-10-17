@@ -1,12 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "../styles/weather_card.css";
 
+const WeatherInfo = (props) => {
+  const { min, max, the, weather, crtCity, imgSrc } = props;
+
+  return (
+    <div className="weather-info">
+      <div>
+        <img src={imgSrc[crtCity]}></img>
+      </div>
+      <h2>{the[crtCity]}&#8451;</h2>
+      <div className="temp-box">
+        <h2>{min[crtCity]}&#8451;</h2>
+        <h2>{max[crtCity]}&#8451;</h2>
+      </div>
+      <h2>{weather[crtCity]}</h2>
+    </div>
+  );
+};
+
 export default function WeatherCard(props) {
   const cityNameList = ["sydney", "melbourne", "brisbane"];
   const [crtCity, setCrtCity] = useState(0);
   const [loadFlags, setLoadFlags] = useState([false, false, false]);
-  const [tempMax, setTempMax] = useState([0, 0, 0]);
-  const [tempMin, setTempMin] = useState([0, 0, 0]);
+  //weather information states
+  const [tempMax, setTempMax] = useState([]);
+  const [tempMin, setTempMin] = useState([]);
+  const [tempThe, setTempThe] = useState([]);
+  const [weatherState, setWeatherState] = useState([]);
+  const [imgSrc, setImgSrc] = useState([]);
 
   //handle current city
   const handleLeft = () => {
@@ -30,14 +52,15 @@ export default function WeatherCard(props) {
 
   useEffect(() => {
     const handleFetch = () => {
-      const res = fetch(
-        `http://localhost:5000/forcast/${cityNameList[crtCity]}`
-      )
+      fetch(`http://localhost:5000/forcast/${cityNameList[crtCity]}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          setTempMin({ ...tempMin, [crtCity]: parseInt(data.min_temp) });
-          setTempMax({ ...tempMax, [crtCity]: parseInt(data.max_temp) });
+          console.log("weather response", data);
+          setTempMin({ ...tempMin, [crtCity]: parseInt(data.min) });
+          setTempMax({ ...tempMax, [crtCity]: parseInt(data.max) });
+          setTempThe({ ...tempThe, [crtCity]: parseInt(data.the) });
+          setWeatherState({ ...weatherState, [crtCity]: data.weather });
+          setImgSrc({ ...imgSrc, [crtCity]: data.img });
         });
     };
     handleFetch();
@@ -50,24 +73,33 @@ export default function WeatherCard(props) {
       </div>
       <div className="info-wrapper">
         <div className="left-icon" onClick={handleLeft}>
-          left
+          <img
+            className="icon"
+            src="http://localhost:5000/static/img/leftArrow.png"
+          ></img>
         </div>
         {loadFlags[crtCity] ? (
-          <div className="weather-info">
-            <div>weather icon</div>
-            <div>{(tempMin[crtCity] + tempMax[crtCity]) / 2}</div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div>{tempMin[crtCity]}</div>
-              <div>{tempMax[crtCity]}</div>
-            </div>
-          </div>
+          <WeatherInfo
+            min={tempMin}
+            max={tempMax}
+            the={tempThe}
+            weather={weatherState}
+            crtCity={crtCity}
+            imgSrc={imgSrc}
+          />
         ) : (
-          <div className="weather-info" onClick={handleWeather}>
-            loading icon
+          <div className="loading-icon" onClick={handleWeather}>
+            <img
+              className="icon"
+              src="http://localhost:5000/static/img/refresh.png"
+            ></img>
           </div>
         )}
         <div className="right-icon" onClick={handleRight}>
-          right
+          <img
+            className="icon"
+            src="http://localhost:5000/static/img/rightArrow.png"
+          ></img>
         </div>
       </div>
     </div>
